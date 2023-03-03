@@ -36,7 +36,7 @@ def extract_jobkr_jobs(keyword):
   #scrap 할 페이지 갯수를 찾기 위해서 아래와 같이 작성
   # range creates sequence of number from
   pages = get_page_count(keyword)
-  print("found", pages, "pages")
+  # print("found", pages, "pages")
   # for 밖으로 빼줘야 됨
   results = []
 
@@ -45,7 +45,7 @@ def extract_jobkr_jobs(keyword):
     # 그 다음엔 각각의 페이지에 아래 함수를 계속 요청할 것임
     base_url = "https://www.jobkorea.co.kr/Search/?stext="
     final_url = f"{base_url}+{keyword}&tabType=recruit&Page_No={page+1}"
-    print(final_url)
+    # print(final_url)
     response = get(final_url)
 
     if response.status_code != 200:

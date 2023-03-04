@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
 </head>
 <body>
-  <h1> Search Results for "{{keyword}}":</h1>
-  {% for job in jobs %}
-    <div>
-      <span>{{job.company}}</span>
-      <span>{{job.title}}</span>
-      <span>{{job.location}}</span>      
-      <a href="{{job.link}}" target="_blank"> Apply Now! </a>
-    </div>
+  <main class="container">
+    <hgroup>
+  <h1> Search Results for "{{keyword}}": </h1>
+      <!--search function grabs the keyword of what user wrote and sends it to the template, search template knows the keyword -->
+
+    <a target="_blank" href="/export?keyword={{keyword}}">Export to File</a>
+    </hgroup>
+    <figure><table role = "grid">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Position</th>
+          <th>Location</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+  {%for job in jobs %}
+    <tr>
+      <td>
+        {{job.company}}
+      </td>
+            <td>
+        {{job.position}}
+      </td>
+            <td>
+        {{job.location}}
+      </td>      
+      <td><a href="{{job.link}}" target="_blank"> Apply Now! </a></td>
+    </tr>
   {% endfor %}
+      </tbody>
+    </table></figure>
+
+  </main>
 </body>
 </html>
